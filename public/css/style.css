@@ -7,6 +7,12 @@
   font-size: .95rem;
 }
 
+/* Join Page */
+.centered-form__form input  {
+  background-color: #f3f3f3;
+  color: #1F4C69;
+}
+
 ul, li {
   list-style-position: inside;
 }

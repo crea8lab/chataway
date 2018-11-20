@@ -9,7 +9,17 @@
 <body>
   <h1>Chataway</h1><span> Build your audience</span>
 
+  <!-- Render messages -->
+  <ol id="messages"></ol>
+
+  <form id="message-form">
+    <input type="text" name="message" placeholder="message...">
+
+    <button>Send</button>
+  </form>
+
   <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/lib/jquery-3.3.1.min.js"></script>
  <script src="/js/index.js"></script>
 </body>
 </html>

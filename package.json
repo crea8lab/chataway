@@ -1,0 +1,32 @@
+{
+  "name": "chataway",
+  "version": "1.0.0",
+  "description": "A chat application for learning ",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha server/test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crea8lab/chataway.git"
+  },
+  "keywords": [
+    "node",
+    "chat-app",
+    "socket.io",
+    "express",
+    "web"
+  ],
+  "author": "Fayvor George",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crea8lab/chataway/issues"
+  },
+  "homepage": "https://github.com/crea8lab/chataway#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.12"
+  }
+}

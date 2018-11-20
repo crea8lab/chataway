@@ -29,16 +29,15 @@ socket.on('newLocationMessage', function (message) {
 // get form element
 $('#message-form').on('submit', function (e) {
   e.preventDefault()
-  
+  let messageTextbox = $('[name=message]')
+
   socket.emit('createMessage', {
     from: 'User',
-    text: $('[name=message]').val()
+    text: messageTextbox.val()
   }, function () {
-    
+    // clear input field
+    messageTextbox.val('')
   })
-
-  // clear input field
-  $('[name=message]').val('')
 })
 
 // get location

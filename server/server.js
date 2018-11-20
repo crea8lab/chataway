@@ -12,7 +12,7 @@ const port = process.env.PORT
 const uri = process.env.MONGODB_URI
 const io = socketIO(server)
 
-const { generateMessage } = require('./utils/message')
+const { generateMessage, generateLocationMessage } = require('./utils/message')
 
 app.use(express.static(publicPath))
 
@@ -25,11 +25,13 @@ io.on('connection', function (socket) {
   socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'))
 
   socket.on('createMessage', (message, callback) => {
-    console.log('createMessage', message)
-
     io.emit('newMessage', generateMessage(message.from, message.text))
 
     callback('recieved')
+  })
+
+  socket.on('createLocationMessage', (coords) => {
+    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude))
   })
 
   // on disconnect

@@ -8,5 +8,18 @@
 </head>
 <body>
   <h1>Chataway</h1><span> Build your audience</span>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io()
+
+    socket.on('connect', () => {
+      console.log('Connected to server')
+    })
+
+    socket.on('disconnect', () => {
+      console.log('Disconnected from server')
+    })
+  </script>
 </body>
 </html>

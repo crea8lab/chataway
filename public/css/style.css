@@ -7,12 +7,6 @@
   font-size: .95rem;
 }
 
-/* Join Page */
-.centered-form__form input {
-  background-color: #f3f3f3;
-  color: #1F4C69;
-}
-
 ul, li {
   list-style-position: inside;
 }
@@ -91,6 +85,8 @@ button:disabled {
 
 .chat__sidebar {
   /* overflow-y: scroll; */
+  display: flex;
+  flex-direction: column;
   width: 260px;
   height: 100vh;
   background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
@@ -132,33 +128,6 @@ button:disabled {
   -webkit-overflow-scrolling: touch;
 }
 
-.isTyping {
-  padding: 5px;
-  position: relative;
-  bottom: 0;
-  color: #aaaaaa;
-  font-style: italic;
-  animation: blink 5s ease-in-out .4s infinite;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 0.4;
-  }
-  25% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0.4;
-  }
-}
-
 .chat__footer {
   background: #e6eaee;
   display: flex;
@@ -174,14 +143,6 @@ button:disabled {
 
 .chat__footer form * {
   margin-right: 10px;
-}
-
-.chat__footer input {
-  border: none;
-  padding: 10px;
-  flex-grow: 1;
-  background-color: #f3f3f3;
-  color: #1F4C69;
 }
 
 .chat__messages {
@@ -227,4 +188,61 @@ button:disabled {
   .chat__footer button {
     margin-right: 0px;
   }
+}
+
+/* Extensions By @tz_fayvor */
+/* Join Page */
+.centered-form__form input {
+  background-color: #f3f3f3;
+  color: #1F4C69;
+}
+
+.chat__footer input {
+  border: none;
+  padding: 10px;
+  flex-grow: 1;
+  background-color: #f3f3f3;
+  color: #1F4C69;
+}
+
+.isTyping {
+  padding: 5px;
+  position: relative;
+  bottom: 0;
+  color: #aaaaaa;
+  font-style: italic;
+  animation: blink 3s ease-in-out .4s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.4;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+#users ol {
+  list-style: none;
+}
+
+.logo {
+  align-self: flex-start;
+  background-color: #0b2536;
+  margin-bottom: 1rem;
+}
+
+.logo h3 {
+  font-size: 2.5rem;
+  color: #65ABD8;
 }

@@ -16,8 +16,6 @@ const { generateMessage, generateLocationMessage } = require('./utils/message')
 const { isRealString } = require('./utils/validation')
 const Users = require('./utils/users')
 
-console.log(Users)
-
 const users = new Users()
 
 app.use(express.static(publicPath))

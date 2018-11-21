@@ -27,8 +27,6 @@ socket.on('connect', function () {
     if (err) { // if error redirect them back to homepage
       alert(err)
       window.location.href = '/'
-    } else {
-      console.log('no error')
     }
   }) 
 })

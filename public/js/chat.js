@@ -1,5 +1,6 @@
 const socket = io()
 
+// Automatically scroll to bottom when new messages arrive and user is near to the bottom
 function scrollToBottom() {
   // selectors
   const messages = $('#messages')
@@ -17,11 +18,13 @@ function scrollToBottom() {
   }
 }
 
+// Client connects to the socket
 socket.on('connect', function () {
+  // Extract user information from the search or query string
   let params = $.deparam(window.location.search)
 
   socket.emit('join', params, function (err) {
-    if (err) {
+    if (err) { // if error redirect them back to homepage
       alert(err)
       window.location.href = '/'
     } else {
@@ -34,6 +37,7 @@ socket.on('disconnect', function () {
   console.log('Disconnected from server')
 }) 
 
+// update the user list when new users join the room
 socket.on('updateUserList', function (users) {
   let ol = $('<ol></ol>')
 
@@ -44,6 +48,7 @@ socket.on('updateUserList', function (users) {
   $('#users').html(ol)
 })
 
+// Generate new message
 socket.on('newMessage', function (message) {
   let formattedTime = moment(message.createdAt).format('h:mm a')
   let template = $('#message-template').html()
@@ -57,6 +62,7 @@ socket.on('newMessage', function (message) {
   scrollToBottom()
 })
 
+// Send user location to room
 socket.on('newLocationMessage', function (message) {
   let formattedTime = moment(message.createdAt).format('h:mm a')
   let template = $('#location-message-template').html()

@@ -27,6 +27,7 @@ io.on('connection', function (socket) {
       return callback('Name and room name are required')
     }
 
+    // user enters a room
     socket.join(params.room)
     users.removeUser(socket.id)
     users.addUser(socket.id, params.name, params.room)
@@ -39,6 +40,7 @@ io.on('connection', function (socket) {
     callback()
   })
 
+  // create new message
   socket.on('createMessage', (message, callback) => {
     let user = users.getUser(socket.id)
 
@@ -49,6 +51,7 @@ io.on('connection', function (socket) {
     callback()
   })
 
+  // create user location
   socket.on('createLocationMessage', (coords) => {
     let user = users.getUser(socket.id)
 

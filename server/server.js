@@ -43,6 +43,15 @@ io.on('connection', function (socket) {
     callback()
   })
 
+  // Someone is typing
+  socket.on('userTyping', () => {
+    let user = users.getUser(socket.id)
+
+    if (user) {
+      io.to(user.room).emit('isTyping', () => user)
+    }
+  })
+
   // create new message
   socket.on('createMessage', (message, callback) => {
     let user = users.getUser(socket.id)
@@ -60,7 +69,6 @@ io.on('connection', function (socket) {
 
     if (user) {
       io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coords.latitude, coords.longitude))
-
     }
   })
 

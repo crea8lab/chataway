@@ -20,6 +20,7 @@ function scrollToBottom() {
 
 // Client connects to the socket
 socket.on('connect', function () {
+  console.log('connected')
   // Extract user information from the search or query string
   let params = $.deparam(window.location.search)
 
@@ -75,6 +76,13 @@ socket.on('newLocationMessage', function (message) {
 })
 
 // Show when a user is typing
+socket.on('isTyping', function (user) {
+  // socket.emit('isTyping', {
+
+  // })
+  console.log(user)
+})
+
 $('[name=message]').on('keyup', function () {
   let textBox = $('[name=message]')
   let informant = $('#isTyping')

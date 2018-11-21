@@ -23,6 +23,9 @@ app.use(express.static(publicPath))
 io.on('connection', function (socket) {
 
   socket.on('join', (params, callback) => {
+    // join room regardless of capitalization method
+    params.room = params.room.toLowerCase()
+
     if (!isRealString(params.name) || !isRealString(params.room)) {
       return callback('Name and room name are required')
     }

@@ -132,6 +132,33 @@ button:disabled {
   -webkit-overflow-scrolling: touch;
 }
 
+.isTyping {
+  padding: 5px;
+  position: relative;
+  bottom: 0;
+  color: #aaaaaa;
+  font-style: italic;
+  animation: blink 5s ease-in-out .4s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.4;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
 .chat__footer {
   background: #e6eaee;
   display: flex;

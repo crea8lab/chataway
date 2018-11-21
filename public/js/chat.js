@@ -76,6 +76,18 @@ socket.on('newLocationMessage', function (message) {
   scrollToBottom()
 })
 
+// Show when a user is typing
+$('[name=message]').on('keyup', function () {
+  let textBox = $('[name=message]')
+  let informant = $('#isTyping')
+
+  if (textBox.length > 0 && textBox.val() !== '') {
+    informant.text('someone is typing...')
+  } else {
+    informant.text('')
+  }
+})
+
 // get form element
 $('#message-form').on('submit', function (e) {
   e.preventDefault()

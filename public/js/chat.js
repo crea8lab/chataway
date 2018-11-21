@@ -77,10 +77,9 @@ socket.on('newLocationMessage', function (message) {
 
 // Show when a user is typing
 socket.on('isTyping', function (user) {
-  // socket.emit('isTyping', {
-
-  // })
-  console.log(user)
+  socket.emit('userTyping', {my: 'data'})
+  // socket.emit('userTyping', console.log(user))
+  // console.log(user)
 })
 
 $('[name=message]').on('keyup', function () {

@@ -21,7 +21,6 @@ const users = new Users()
 app.use(express.static(publicPath))
 
 io.on('connection', function (socket) {
-  console.log('New user connected')
 
   socket.on('join', (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
@@ -51,7 +50,12 @@ io.on('connection', function (socket) {
   })
 
   socket.on('createLocationMessage', (coords) => {
-    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude))
+    let user = users.getUser(socket.id)
+
+    if (user) {
+      io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coords.latitude, coords.longitude))
+
+    }
   })
 
   // on disconnect

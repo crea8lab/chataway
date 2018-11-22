@@ -44,10 +44,10 @@ io.on('connection', function (socket) {
   })
 
   // Someone is typing
-  socket.on('isTyping', (data) => {
+  socket.on('isTyping', (data, callback) => {
     let user = users.getUser(socket.id)
 
-    socket.broadcast.to(user.room).emit('userTyping', generateMessage(user.name, 'is typing...'))
+    socket.in(user.room).broadcast.emit('userTyping', generateMessage(user.name, 'is typing...'))
   })
 
   // create new message

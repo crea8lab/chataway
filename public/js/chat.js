@@ -76,18 +76,16 @@ socket.on('newLocationMessage', function (message) {
 })
 
 // Show when a user is typing
-socket.on('isTyping', function (user) {
-  socket.emit('userTyping', {my: 'data'})
-  // socket.emit('userTyping', console.log(user))
-  // console.log(user)
-})
-
 $('[name=message]').on('keyup', function () {
   let textBox = $('[name=message]')
   let informant = $('#isTyping')
 
   if (textBox.length > 0 && textBox.val() !== '') {
-    informant.text('someone is typing...')
+    socket.emit('isTyping', 'someone is typing...')
+
+    socket.on('userTyping', (user) => {
+      informant.text(`${user.from} ${user.text}`)
+    })
   } else {
     informant.text('')
   }

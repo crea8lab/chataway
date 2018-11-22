@@ -44,14 +44,10 @@ io.on('connection', function (socket) {
   })
 
   // Someone is typing
-  socket.on('userTyping', (data) => {
-    console.log(data)
-    // io.emit('isTyping', {msg: 'hi from userTyping'})
-    // let user = users.getUser(socket.id)
+  socket.on('isTyping', (data) => {
+    let user = users.getUser(socket.id)
 
-    // if (user) {
-    //   io.to(user.room).emit('isTyping', { user: user.name })
-    // }
+    socket.broadcast.to(user.room).emit('userTyping', generateMessage(user.name, 'is typing...'))
   })
 
   // create new message
